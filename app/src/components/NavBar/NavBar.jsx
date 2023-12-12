@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function NavBar() {
+export default function NavBar({userData , logout}) {
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-light">
@@ -11,7 +11,7 @@ export default function NavBar() {
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        {userData !== null ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="home">Home</Link>
         </li>
@@ -21,7 +21,8 @@ export default function NavBar() {
         <li className="nav-item">
           <Link className="nav-link" to="carts">Carts</Link>
         </li>
-        </ul>
+        </ul> : null}
+      
         <ul className="navbar-nav ms-auto mb-2 d-flex align-items-center mb-lg-0">
         <li className="nav-item">
           <i className='fab mx-2 fa-facebook'></i>
@@ -29,12 +30,21 @@ export default function NavBar() {
           <i className='fab mx-2 fa-twitter'></i>
           <i className='fab mx-2 fa-linkedin'></i>
         </li>
-        <li className="nav-item">
+        {userData === null ? <>
+          <li className="nav-item">
           <Link className="nav-link" to="login">Login</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="register">Register</Link>
         </li>
+        </> :
+         <li className="nav-item">
+         <Link className="nav-link" onClick={logout}>LogOut</Link>
+       </li>
+        }
+        
+
+       
 
         
         </ul>

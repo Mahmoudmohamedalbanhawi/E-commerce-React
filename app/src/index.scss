@@ -14,6 +14,9 @@ body{
     color:$ratingColor;
   }
   
+  .border-main{
+    border: 1px solid $bgColor !important;
+  }
   .cursor-pointer
   {
       cursor: pointer;
